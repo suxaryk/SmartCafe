@@ -1,0 +1,19 @@
+*.com
+*.class
+*.zip
+*.7zip
+*.rar
+*.png
+.idea/*
+*.iml
+
+target/*
+icons/*
+out/*
+
+.metadata
+# Eclipse
+.project
+*.launch
+.classpath
+.target
