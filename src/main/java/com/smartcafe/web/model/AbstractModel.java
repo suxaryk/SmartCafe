@@ -3,7 +3,7 @@ package com.smartcafe.web.model;
 
 import java.io.Serializable;
 
-public abstract class AbstractModel implements Serializable{
+public class AbstractModel implements Serializable{
 
     private static final long serialVersionUID = 2152643693328563932L;
 

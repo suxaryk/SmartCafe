@@ -17,4 +17,20 @@ public class OrderItem extends AbstractModel {
     public OrderItem(Long id) {
         super(id);
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getItemSum() {
+        return itemSum;
+    }
+
+    public void setItemSum(int itemSum) {
+        this.itemSum = itemSum;
+    }
 }
