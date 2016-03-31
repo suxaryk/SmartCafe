@@ -19,7 +19,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 @ComponentScan({"com.smartcafe.web"})
 @PropertySource(value = {"classpath:application.properties"})
-public class HibernateConfiguration {
+public class HibernateConfig {
 
     @Autowired
     private Environment environment;
@@ -29,7 +29,7 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory
-                .setPackagesToScan(new String[]{"com.smartcafe.web.domain"});
+                .setPackagesToScan(new String[]{"com.smartcafe.web.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

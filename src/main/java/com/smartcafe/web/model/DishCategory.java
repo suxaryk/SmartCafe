@@ -1,21 +1,53 @@
 package com.smartcafe.web.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+/**
+ * Created by suxarina on 3/31/2016.
+ */
 @Entity
-@Table(name="dish_category")
-public class DishCategory extends AbstractModel{
-
-    private static final long serialVersionUID = -2524340722817554048L;
-
+@Table(name = "dish_category", schema = "smart_cafe", catalog = "")
+public class DishCategory {
+    private int id;
     private String title;
 
-    public DishCategory() {
-        super();
+    @Id
+    @Column(name = "id", nullable = false)
+    public int getId() {
+        return id;
     }
 
-    public DishCategory(Long id) {
-        super(id);
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "title", nullable = false, length = 100)
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DishCategory that = (DishCategory) o;
+
+        if (id != that.id) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        return result;
     }
 }

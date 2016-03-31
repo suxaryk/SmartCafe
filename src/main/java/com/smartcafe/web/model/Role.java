@@ -1,30 +1,53 @@
 package com.smartcafe.web.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+/**
+ * Created by suxarina on 3/31/2016.
+ */
 @Entity
-@Table(name="role")
-public class Role extends AbstractModel{
+public class Role {
+    private int id;
+    private String type;
 
-    private static final long serialVersionUID = -8501199485760877095L;
-
-    private String title;
-
-
-    public Role() {
-        super();
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    public int getId() {
+        return id;
     }
 
-    public Role(Long id) {
-        super(id);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    @Basic
+    @Column(name = "type", nullable = false, length = 45)
+    public String getType() {
+        return type;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Role role = (Role) o;
+
+        if (id != role.id) return false;
+        if (type != null ? !type.equals(role.type) : role.type != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (type != null ? type.hashCode() : 0);
+        return result;
     }
 }

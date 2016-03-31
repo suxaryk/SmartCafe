@@ -6,8 +6,8 @@ import javax.persistence.*;
  * Created by suxarina on 3/31/2016.
  */
 @Entity
-@Table(name = "order_item", schema = "smart_cafe", catalog = "")
-public class OrderItem {
+@Table(name = "dish_ingredient", schema = "smart_cafe", catalog = "")
+public class DishIngredient {
     private int id;
     private int quantity;
 
@@ -36,10 +36,10 @@ public class OrderItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderItem orderItem = (OrderItem) o;
+        DishIngredient that = (DishIngredient) o;
 
-        if (id != orderItem.id) return false;
-        if (quantity != orderItem.quantity) return false;
+        if (id != that.id) return false;
+        if (quantity != that.quantity) return false;
 
         return true;
     }
