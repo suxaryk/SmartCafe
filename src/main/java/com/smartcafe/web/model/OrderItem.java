@@ -1,17 +1,26 @@
 package com.smartcafe.web.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
- * Created by suxarina on 3/31/2016.
+ * Created by suxarina on 4/11/2016.
  */
 @Entity
 @Table(name = "order_item", schema = "smart_cafe", catalog = "")
-public class OrderItem {
+public class OrderItem implements Serializable {
+    private static final long serialVersionUID = 7635981821785039844L;
+
     private int id;
     private int quantity;
 
+    public OrderItem() {
+    }
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -21,7 +30,6 @@ public class OrderItem {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "quantity", nullable = false)
     public int getQuantity() {
         return quantity;

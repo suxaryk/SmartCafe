@@ -1,10 +1,11 @@
-package com.smartcafe.web.dao;
+package com.smartcafe.web.service;
 
 import com.smartcafe.web.model.User;
 
 import java.util.List;
 
-public interface UserDao extends GenericDao<User, Integer> {
+
+public interface UserService extends GenericService<User,Integer>{
     User findById(int id);
 
     void saveUser(User user);
@@ -12,4 +13,5 @@ public interface UserDao extends GenericDao<User, Integer> {
     boolean deleteById(int id);
 
     List<User> findAllUsers();
+
 }

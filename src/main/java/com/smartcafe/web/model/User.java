@@ -1,15 +1,18 @@
 package com.smartcafe.web.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
- * Created by suxarina on 3/31/2016.
+ * Created by suxarina on 4/11/2016.
  */
 @Entity
-public class User {
+@Table(name = "user")
+public class User implements Serializable {
+    private static final long serialVersionUID = -4811579564071921584L;
+
     private int id;
     private String ssoId;
     private String name;
@@ -17,7 +20,11 @@ public class User {
     private String email;
     private String phone;
 
+    public User() {
+    }
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -27,7 +34,6 @@ public class User {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "sso_id", nullable = false, length = 45)
     public String getSsoId() {
         return ssoId;
@@ -37,7 +43,6 @@ public class User {
         this.ssoId = ssoId;
     }
 
-    @Basic
     @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
@@ -47,7 +52,6 @@ public class User {
         this.name = name;
     }
 
-    @Basic
     @Column(name = "password", nullable = false, length = 45)
     public String getPassword() {
         return password;
@@ -57,7 +61,6 @@ public class User {
         this.password = password;
     }
 
-    @Basic
     @Column(name = "email", nullable = true, length = 45)
     public String getEmail() {
         return email;
@@ -67,7 +70,6 @@ public class User {
         this.email = email;
     }
 
-    @Basic
     @Column(name = "phone", nullable = true, length = 45)
     public String getPhone() {
         return phone;

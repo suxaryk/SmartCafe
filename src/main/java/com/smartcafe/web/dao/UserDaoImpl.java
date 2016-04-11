@@ -1,36 +1,35 @@
 package com.smartcafe.web.dao;
 
 import com.smartcafe.web.model.User;
-import org.hibernate.Hibernate;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("userDao")
-public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
+@Repository
+public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDao {
 
     @Override
     public User findById(int id) {
-        return getByKey(id);
+        return find(id);
     }
 
     @Override
-    public User findBySSO(String sso) {
-        return null;
+    public void saveUser(User user) {
+        saveUser(user);
     }
 
     @Override
-    public void saveUser(User film) {
-
+    public boolean deleteById(int id) {
+        Query userTaskQuery = currentSession().createQuery(
+                "from User u where :id");
+        userTaskQuery.setParameter("id", id);
+        return userTaskQuery.executeUpdate() > 0;
     }
 
-    @Override
-    public void deleteById(int id) {
-
-    }
-
+    @SuppressWarnings("uncheked")
     @Override
     public List<User> findAllUsers() {
-        return null;
+        return getAll();
     }
 }

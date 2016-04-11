@@ -9,13 +9,14 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by suxarina on 4/11/2016.
  */
 @Entity
-public class Role implements Serializable{
-    private static final long serialVersionUID = 592150238087646495L;
+@Table(name = "dish_ingredient", schema = "smart_cafe", catalog = "")
+public class RecipeItem implements Serializable{
+    private static final long serialVersionUID = 431769159450560414L;
 
-    private int id;
-    private String type;
+    private Integer id;
+    private Integer quantity;
 
-    public Role() {
+    public RecipeItem() {
     }
 
     @Id
@@ -29,14 +30,13 @@ public class Role implements Serializable{
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "type", nullable = false, length = 45)
-    public String getType() {
-        return type;
+    @Column(name = "quantity", nullable = false)
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
@@ -44,10 +44,10 @@ public class Role implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Role role = (Role) o;
+        RecipeItem that = (RecipeItem) o;
 
-        if (id != role.id) return false;
-        if (type != null ? !type.equals(role.type) : role.type != null) return false;
+        if (id != that.id) return false;
+        if (quantity != that.quantity) return false;
 
         return true;
     }
@@ -55,7 +55,7 @@ public class Role implements Serializable{
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + (type != null ? type.hashCode() : 0);
+        result = 31 * result + quantity;
         return result;
     }
 }

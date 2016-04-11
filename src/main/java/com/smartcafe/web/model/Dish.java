@@ -1,20 +1,27 @@
 package com.smartcafe.web.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 /**
- * Created by suxarina on 3/31/2016.
+ * Created by suxarina on 4/11/2016.
  */
 @Entity
-public class Dish {
-    private int id;
+@Table(name = "dish")
+public class Dish implements Serializable {
+    private static final long serialVersionUID = 9167452444948699476L;
+
+    private Integer id;
     private String title;
     private int unitPrice;
 
+    public Dish() {
+    }
+
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -24,7 +31,6 @@ public class Dish {
         this.id = id;
     }
 
-    @Basic
     @Column(name = "title", nullable = false, length = 100)
     public String getTitle() {
         return title;
@@ -34,7 +40,6 @@ public class Dish {
         this.title = title;
     }
 
-    @Basic
     @Column(name = "unit_price", nullable = false)
     public int getUnitPrice() {
         return unitPrice;
