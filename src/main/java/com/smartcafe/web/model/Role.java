@@ -5,10 +5,8 @@ import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/**
- * Created by suxarina on 4/11/2016.
- */
 @Entity
+@Table(name = "role", schema = "smart_cafe")
 public class Role implements Serializable{
     private static final long serialVersionUID = 592150238087646495L;
 

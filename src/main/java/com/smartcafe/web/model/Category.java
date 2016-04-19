@@ -7,19 +7,16 @@ import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/**
- * Created by suxarina on 4/11/2016.
- */
 @Entity
-@Table(name = "dish_category", schema = "smart_cafe", catalog = "")
-public class Menu implements Serializable{
+@Table(name = "dish_category", schema = "smart_cafe")
+public class Category implements Serializable{
     private static final long serialVersionUID = -7953731961098354542L;
 
     private Integer id;
     private String title;
-    private Set<Dish> category = new HashSet<Dish>(0);
+    private Set<Dish> dishes = new HashSet<>(0);
 
-    public Menu() {
+    public Category() {
     }
 
     @Id
@@ -42,13 +39,13 @@ public class Menu implements Serializable{
         this.title = title;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dish_category")
-    public Set<Dish> getCategory() {
-        return category;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    public Set<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setCategory(Set<Dish> category) {
-        this.category = category;
+    public void setDishes(Set<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     @Override
@@ -56,7 +53,7 @@ public class Menu implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Menu that = (Menu) o;
+        Category that = (Category) o;
 
         if (id != that.id) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;

@@ -2,20 +2,21 @@ package com.smartcafe.web.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/**
- * Created by suxarina on 4/11/2016.
- */
 @Entity
-@Table(name = "dish")
-public class Dish implements Serializable {
+@Table(name = "dish", schema = "smart_cafe")
+public class Dish implements Serializable{
     private static final long serialVersionUID = 9167452444948699476L;
 
-    private Integer id;
+    private int id;
     private String title;
     private int unitPrice;
+    private Category category;
+    private Set<Product> products = new HashSet<>(0);
 
     public Dish() {
     }
@@ -49,6 +50,29 @@ public class Dish implements Serializable {
         this.unitPrice = unitPrice;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "dish_category_id")
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "dish_product", joinColumns = {
+            @JoinColumn(name = "id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "id",
+                    nullable = false, updatable = false) })
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> recipe) {
+        this.products = recipe;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,8 +83,8 @@ public class Dish implements Serializable {
         if (id != dish.id) return false;
         if (unitPrice != dish.unitPrice) return false;
         if (title != null ? !title.equals(dish.title) : dish.title != null) return false;
+        return category != null ? category.equals(dish.category) : dish.category == null;
 
-        return true;
     }
 
     @Override
@@ -68,6 +92,7 @@ public class Dish implements Serializable {
         int result = id;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + unitPrice;
+        result = 31 * result + (category != null ? category.hashCode() : 0);
         return result;
     }
 }

@@ -5,11 +5,8 @@ import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/**
- * Created by suxarina on 4/11/2016.
- */
 @Entity
-@Table(name = "dish_ingredient", schema = "smart_cafe", catalog = "")
+@Table(name = "dish_product", schema = "smart_cafe")
 public class RecipeItem implements Serializable{
     private static final long serialVersionUID = 431769159450560414L;
 

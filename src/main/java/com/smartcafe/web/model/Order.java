@@ -6,10 +6,8 @@ import java.sql.Timestamp;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-/**
- * Created by suxarina on 4/11/2016.
- */
 @Entity
+@Table(name = "order", schema = "smart_cafe")
 public class Order implements Serializable{
     private static final long serialVersionUID = 1679663986952911499L;
 
