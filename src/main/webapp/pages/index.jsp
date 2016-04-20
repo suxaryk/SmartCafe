@@ -5,5 +5,7 @@
   </head>
   <body>
         <h1>Message : ${message}</h1>
+  <a href="login.jsp"></a>
+
   </body>
 </html>

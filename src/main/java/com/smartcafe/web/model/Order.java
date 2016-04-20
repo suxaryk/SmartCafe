@@ -3,6 +3,8 @@ package com.smartcafe.web.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -14,6 +16,8 @@ public class Order implements Serializable{
     private int id;
     private Timestamp dateTime;
     private int totalPrice;
+    private Set<OrderItem> orderItems = new HashSet<>(0);
+
 
     public Order() {
     }
@@ -47,25 +51,12 @@ public class Order implements Serializable{
         this.totalPrice = totalPrice;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Order order = (Order) o;
-
-        if (id != order.id) return false;
-        if (totalPrice != order.totalPrice) return false;
-        if (dateTime != null ? !dateTime.equals(order.dateTime) : order.dateTime != null) return false;
-
-        return true;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
+    public Set<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
-        result = 31 * result + totalPrice;
-        return result;
+    public void setOrderItems(Set<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 }

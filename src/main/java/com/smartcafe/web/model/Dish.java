@@ -17,6 +17,7 @@ public class Dish implements Serializable{
     private int unitPrice;
     private Category category;
     private Set<Product> products = new HashSet<>(0);
+    private OrderItem orderItem;
 
     public Dish() {
     }
@@ -73,26 +74,13 @@ public class Dish implements Serializable{
         this.products = recipe;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Dish dish = (Dish) o;
-
-        if (id != dish.id) return false;
-        if (unitPrice != dish.unitPrice) return false;
-        if (title != null ? !title.equals(dish.title) : dish.title != null) return false;
-        return category != null ? category.equals(dish.category) : dish.category == null;
-
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    public OrderItem getOrderItem() {
+        return orderItem;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + unitPrice;
-        result = 31 * result + (category != null ? category.hashCode() : 0);
-        return result;
+    public void setOrderItem(OrderItem orderItem) {
+        this.orderItem = orderItem;
     }
 }

@@ -17,9 +17,9 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"com.smartcafe.web"})
+@ComponentScan({"com.smartcafe.web.config"})
 @PropertySource(value = {"classpath:application.properties"})
-public class HibernateConfig {
+public class HibernateConfiguration {
 
     @Autowired
     private Environment environment;

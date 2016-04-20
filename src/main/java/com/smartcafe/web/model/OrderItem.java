@@ -12,6 +12,8 @@ public class OrderItem implements Serializable {
 
     private int id;
     private int quantity;
+    private Dish dish;
+    private Order order;
 
     public OrderItem() {
     }
@@ -36,23 +38,22 @@ public class OrderItem implements Serializable {
         this.quantity = quantity;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        OrderItem orderItem = (OrderItem) o;
-
-        if (id != orderItem.id) return false;
-        if (quantity != orderItem.quantity) return false;
-
-        return true;
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "orderItem",cascade = CascadeType.ALL)
+    public Dish getDish() {
+        return dish;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + quantity;
-        return result;
+    public void setDish(Dish dish) {
+        this.dish = dish;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

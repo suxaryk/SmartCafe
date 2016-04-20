@@ -8,7 +8,7 @@ import java.util.Set;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "dish_category", schema = "smart_cafe")
+@Table(name = "category", schema = "smart_cafe")
 public class Category implements Serializable{
     private static final long serialVersionUID = -7953731961098354542L;
 

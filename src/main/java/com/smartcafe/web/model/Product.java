@@ -16,6 +16,7 @@ public class Product implements Serializable{
     private String title;
     private int quantity;
     private Set<Dish> dishes = new HashSet<>(0);
+    private Set<ProductHistory> productHistory = new HashSet<>(0);
 
     public Product() {
     }
@@ -58,26 +59,14 @@ public class Product implements Serializable{
         this.dishes = dishes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Product product = (Product) o;
-
-        if (id != product.id) return false;
-        if (quantity != product.quantity) return false;
-        if (title != null ? !title.equals(product.title) : product.title != null) return false;
-        return dishes != null ? dishes.equals(product.dishes) : product.dishes == null;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product", cascade = CascadeType.ALL)
+    public Set<ProductHistory> getProductHistory() {
+        return productHistory;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + quantity;
-        result = 31 * result + (dishes != null ? dishes.hashCode() : 0);
-        return result;
+    public void setProductHistory(Set<ProductHistory> productHistory) {
+        this.productHistory = productHistory;
     }
+
+
 }
