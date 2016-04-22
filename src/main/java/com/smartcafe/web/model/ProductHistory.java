@@ -21,7 +21,7 @@ public class ProductHistory implements Serializable{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "product_history_id", nullable = false)
     public int getId() {
         return id;
     }

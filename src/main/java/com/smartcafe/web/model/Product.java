@@ -23,7 +23,7 @@ public class Product implements Serializable{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "product_id", nullable = false)
     public int getId() {
         return id;
     }

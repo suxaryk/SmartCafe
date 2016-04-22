@@ -24,7 +24,7 @@ public class Dish implements Serializable{
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "dish_id", nullable = false)
     public int getId() {
         return id;
     }
@@ -52,7 +52,7 @@ public class Dish implements Serializable{
     }
 
     @ManyToOne
-    @JoinColumn(name = "dish_category_id")
+    @JoinColumn(name = "category_id")
     public Category getCategory() {
         return category;
     }

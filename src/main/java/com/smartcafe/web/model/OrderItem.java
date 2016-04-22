@@ -20,7 +20,7 @@ public class OrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "order_id", nullable = false)
     public int getId() {
         return id;
     }

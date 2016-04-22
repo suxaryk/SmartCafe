@@ -11,7 +11,6 @@ public class User implements Serializable {
     private static final long serialVersionUID = -4811579564071921584L;
 
     private int id;
-    private String ssoId;
     private String name;
     private String password;
     private String email;
@@ -22,22 +21,13 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "user_id", nullable = false)
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Column(name = "sso_id", nullable = false, length = 45)
-    public String getSsoId() {
-        return ssoId;
-    }
-
-    public void setSsoId(String ssoId) {
-        this.ssoId = ssoId;
     }
 
     @Column(name = "name", nullable = false, length = 45)
@@ -76,31 +66,6 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        User user = (User) o;
 
-        if (id != user.id) return false;
-        if (ssoId != null ? !ssoId.equals(user.ssoId) : user.ssoId != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (password != null ? !password.equals(user.password) : user.password != null) return false;
-        if (email != null ? !email.equals(user.email) : user.email != null) return false;
-        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (ssoId != null ? ssoId.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        return result;
-    }
 }
