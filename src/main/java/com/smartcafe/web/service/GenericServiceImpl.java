@@ -1,6 +1,7 @@
 package com.smartcafe.web.service;
 
 import com.smartcafe.web.dao.GenericDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,8 @@ import java.util.List;
 
 @Service
 public abstract class GenericServiceImpl<E, K> implements GenericService<E, K> {
+
+    @Autowired
     private GenericDao<E, K> genericDao;
 
     public GenericServiceImpl(GenericDao<E,K> genericDao) {

@@ -13,6 +13,7 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 @Repository
 public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
+
     @Autowired
     private SessionFactory sessionFactory;
 

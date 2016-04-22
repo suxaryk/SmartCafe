@@ -63,8 +63,8 @@ public class Dish implements Serializable{
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "dish_product", joinColumns = {
-            @JoinColumn(name = "id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "id",
+            @JoinColumn(name = "dish_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "product_id",
                     nullable = false, updatable = false) })
     public Set<Product> getProducts() {
         return products;
