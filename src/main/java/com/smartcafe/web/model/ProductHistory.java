@@ -11,12 +11,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class ProductHistory implements Serializable{
     private static final long serialVersionUID = 2603643896182676745L;
 
-    private int id;
+    private Integer id;
     private Timestamp date;
-    private int quantity;
+    private Double quantity;
     private Product product;
 
     public ProductHistory() {
+    }
+
+    public ProductHistory(int id, Timestamp date, double quantity, Product product) {
+        this.id = id;
+        this.date = date;
+        this.quantity = quantity;
+        this.product = product;
     }
 
     @Id
@@ -40,11 +47,11 @@ public class ProductHistory implements Serializable{
     }
 
     @Column(name = "quantity", nullable = false)
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

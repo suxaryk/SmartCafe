@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class UserHistory implements Serializable {
     private static final long serialVersionUID = 5921421077206761390L;
 
-    private int id;
+    private Integer id;
     private Timestamp dateTimeIn;
     private Timestamp dateTimeOut;
 

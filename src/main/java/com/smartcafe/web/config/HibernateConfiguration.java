@@ -29,7 +29,7 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory
-                .setPackagesToScan(new String[]{"com.smartcafe.web.model"});
+                .setPackagesToScan(new String[]{"com.smartafe.web.model"});
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }

@@ -13,13 +13,20 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Order implements Serializable{
     private static final long serialVersionUID = 1679663986952911499L;
 
-    private int id;
+    private Integer id;
     private Timestamp dateTime;
-    private int totalPrice;
+    private Integer totalPrice;
     private Set<OrderItem> orderItems = new HashSet<>(0);
 
 
     public Order() {
+    }
+
+    public Order(int id, Timestamp dateTime, int totalPrice, Set<OrderItem> orderItems) {
+        this.id = id;
+        this.dateTime = dateTime;
+        this.totalPrice = totalPrice;
+        this.orderItems = orderItems;
     }
 
     @Id

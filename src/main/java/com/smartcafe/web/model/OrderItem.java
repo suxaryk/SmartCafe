@@ -10,17 +10,24 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class OrderItem implements Serializable {
     private static final long serialVersionUID = 7635981821785039844L;
 
-    private int id;
-    private int quantity;
+    private Integer id;
+    private Integer quantity;
     private Dish dish;
     private Order order;
 
     public OrderItem() {
     }
 
+    public OrderItem(int id, int quantity, Dish dish, Order order) {
+        this.id = id;
+        this.quantity = quantity;
+        this.dish = dish;
+        this.order = order;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_item_id", nullable = false)
     public int getId() {
         return id;
     }

@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-@SuppressWarnings("unchecked")
+//@SuppressWarnings("unchecked")
 @Repository
 public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
 

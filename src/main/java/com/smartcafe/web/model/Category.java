@@ -19,6 +19,12 @@ public class Category implements Serializable{
     public Category() {
     }
 
+    public Category(int id, String title, Set<Dish> dishes) {
+        this.id = id;
+        this.title = title;
+        this.dishes = dishes;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "category_id", nullable = false)
@@ -48,24 +54,4 @@ public class Category implements Serializable{
         this.dishes = dishes;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Category category = (Category) o;
-
-        if (id != null ? !id.equals(category.id) : category.id != null) return false;
-        if (title != null ? !title.equals(category.title) : category.title != null) return false;
-        return dishes != null ? dishes.equals(category.dishes) : category.dishes == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (dishes != null ? dishes.hashCode() : 0);
-        return result;
-    }
 }

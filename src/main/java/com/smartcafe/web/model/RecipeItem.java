@@ -6,19 +6,24 @@ import java.io.Serializable;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "dish_product", schema = "smart_cafe")
+@Table(name = "recipe_item", schema = "smart_cafe")
 public class RecipeItem implements Serializable{
     private static final long serialVersionUID = 431769159450560414L;
 
     private Integer id;
-    private Integer quantity;
+    private Double quantity;
 
     public RecipeItem() {
     }
 
+    public RecipeItem(int id, double quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "dish_product_id", nullable = false)
+    @Column(name = "recipe_item_id", nullable = false)
     public int getId() {
         return id;
     }
@@ -28,31 +33,12 @@ public class RecipeItem implements Serializable{
     }
 
     @Column(name = "quantity", nullable = false)
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RecipeItem that = (RecipeItem) o;
-
-        if (id != that.id) return false;
-        if (quantity != that.quantity) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + quantity;
-        return result;
-    }
 }

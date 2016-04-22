@@ -19,13 +19,20 @@ public class Cafe implements Serializable {
     public Cafe() {
     }
 
+    public Cafe(int id, String title, String address, String passWifi, String wish) {
+        this.id = id;
+        this.title = title;
+        this.address = address;
+        this.passWifi = passWifi;
+        this.wish = wish;
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "cafe_id", nullable = false)
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }

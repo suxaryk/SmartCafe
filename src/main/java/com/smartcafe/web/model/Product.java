@@ -12,13 +12,21 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Product implements Serializable{
     private static final long serialVersionUID = -6897519954136772648L;
 
-    private int id;
+    private Integer id;
     private String title;
-    private int quantity;
+    private Double quantity;
     private Set<Dish> dishes = new HashSet<>(0);
     private Set<ProductHistory> productHistory = new HashSet<>(0);
 
     public Product() {
+    }
+
+    public Product(int id, String title, double quantity, Set<Dish> dishes, Set<ProductHistory> productHistory) {
+        this.id = id;
+        this.title = title;
+        this.quantity = quantity;
+        this.dishes = dishes;
+        this.productHistory = productHistory;
     }
 
     @Id
@@ -42,11 +50,11 @@ public class Product implements Serializable{
     }
 
     @Column(name = "quantity", nullable = false)
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

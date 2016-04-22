@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class User implements Serializable {
     private static final long serialVersionUID = -4811579564071921584L;
 
-    private int id;
+    private Integer id;
     private String name;
     private String password;
     private String email;

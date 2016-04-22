@@ -10,7 +10,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class UserRole implements Serializable{
     private static final long serialVersionUID = 3335943993008800669L;
 
-    private int id;
+    private Integer id;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

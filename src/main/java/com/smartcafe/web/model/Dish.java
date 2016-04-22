@@ -12,14 +12,23 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Dish implements Serializable{
     private static final long serialVersionUID = 9167452444948699476L;
 
-    private int id;
+    private Integer id;
     private String title;
-    private int unitPrice;
+    private Integer unitPrice;
     private Category category;
     private Set<Product> products = new HashSet<>(0);
     private OrderItem orderItem;
 
     public Dish() {
+    }
+
+    public Dish(int id, String title, int unitPrice, Category category, Set<Product> products, OrderItem orderItem) {
+        this.id = id;
+        this.title = title;
+        this.unitPrice = unitPrice;
+        this.category = category;
+        this.products = products;
+        this.orderItem = orderItem;
     }
 
     @Id
@@ -62,7 +71,7 @@ public class Dish implements Serializable{
     }
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "dish_product", joinColumns = {
+    @JoinTable(name = "recipe_item", joinColumns = {
             @JoinColumn(name = "dish_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "product_id",
                     nullable = false, updatable = false) })
