@@ -15,16 +15,17 @@ public class Cafe implements Serializable {
     private String address;
     private String passWifi;
     private String wish;
+    private Integer tableCount;
 
     public Cafe() {
     }
 
-    public Cafe(int id, String title, String address, String passWifi, String wish) {
-        this.id = id;
+    public Cafe(String title, String address, String passWifi, String wish, Integer tableCount) {
         this.title = title;
         this.address = address;
         this.passWifi = passWifi;
         this.wish = wish;
+        this.tableCount = tableCount;
     }
 
     @Id
@@ -73,29 +74,12 @@ public class Cafe implements Serializable {
         this.wish = wish;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Cafe cafe = (Cafe) o;
-
-        if (id != cafe.id) return false;
-        if (title != null ? !title.equals(cafe.title) : cafe.title != null) return false;
-        if (address != null ? !address.equals(cafe.address) : cafe.address != null) return false;
-        if (passWifi != null ? !passWifi.equals(cafe.passWifi) : cafe.passWifi != null) return false;
-        if (wish != null ? !wish.equals(cafe.wish) : cafe.wish != null) return false;
-
-        return true;
+    @Column(name = "table_count", nullable = false)
+    public Integer getTableCount() {
+        return tableCount;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (passWifi != null ? passWifi.hashCode() : 0);
-        result = 31 * result + (wish != null ? wish.hashCode() : 0);
-        return result;
+    public void setTableCount(Integer tableCount) {
+        this.tableCount = tableCount;
     }
 }

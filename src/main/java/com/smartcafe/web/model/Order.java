@@ -13,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Order implements Serializable{
     private static final long serialVersionUID = 1679663986952911499L;
 
-    private Integer id;
+    private Long id;
     private Timestamp dateTime;
     private Integer totalPrice;
     private Set<OrderItem> orderItems = new HashSet<>(0);
@@ -22,7 +22,7 @@ public class Order implements Serializable{
     public Order() {
     }
 
-    public Order(int id, Timestamp dateTime, int totalPrice, Set<OrderItem> orderItems) {
+    public Order(long id, Timestamp dateTime, int totalPrice, Set<OrderItem> orderItems) {
         this.id = id;
         this.dateTime = dateTime;
         this.totalPrice = totalPrice;
@@ -32,11 +32,11 @@ public class Order implements Serializable{
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "order_id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
