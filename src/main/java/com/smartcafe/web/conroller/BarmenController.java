@@ -17,9 +17,9 @@ public class BarmenController {
 
     @RequestMapping(value = {"/table"}, method = RequestMethod.GET)
     public String Authentication(HttpServletRequest request, ModelMap model) {
-        Integer tableCount = cafeService.get(1).getTableCount();
-        request.getSession().setAttribute("tableCount", tableCount);
-        model.addAttribute("tableCount", tableCount);
+//        Integer tableCount = cafeService.get(1).getTableCount();
+//        request.getSession().setAttribute("tableCount", tableCount);
+//        model.addAttribute("tableCount", tableCount);
         return "table";
     }
 

@@ -18,29 +18,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select name, password from user where name=?")
+                        "select username,password, enabled from user where username=?")
                 .authoritiesByUsernameQuery(
-                        "SELECT name, type \n" +
-                        "FROM user\n" +
-                        "INNER JOIN user_role \n" +
-                        "ON user.user_id = user_role.user_id\n" +
-                        "INNER JOIN role\n" +
-                        "ON role.role_id = user_role.role_id " +
-                        "WHERE name=?"
-                );
-
+                        "select username, role from user_role where username=?");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/static/**").permitAll()
-                .antMatchers("/table/**", "/menu/**", "/order/**").access("hasRole('Barmen') and hasRole('Owner')")
-                .antMatchers("/admin/**").access("hasRole('Admin') and hasRole('Owner')")
+
+                .antMatchers("/table/**", "/menu/**", "/order/**").access("hasRole('ROLE_USER')")
+                .and().formLogin().loginPage("/login")
+                .usernameParameter("ssoId").passwordParameter("password")
+                .and().csrf()
+                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
+
+        http.authorizeRequests()
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("ssoId").passwordParameter("password")
                 .and().csrf()

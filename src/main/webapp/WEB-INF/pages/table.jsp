@@ -68,6 +68,8 @@
         </div>
     </div>
 
+    <a href="<c:url value="/logout" />" class="btn btn-danger btn-sm pull-right"  role="button" >Sign out</a>
+
 
 
 

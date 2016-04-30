@@ -1,6 +1,7 @@
 package com.smartcafe.web.conroller;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -11,14 +12,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Collection;
 
 @Controller
 public class AuthenticationController {
 
-    @RequestMapping(value = {"/", "/auth"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public String Authentication(ModelMap model) {
         model.addAttribute("user", getPrincipal());
-        return "login";
+
+
+        return "index";
 
     }
 
@@ -39,7 +43,7 @@ public class AuthenticationController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/home?logout";
+        return "redirect:/login?logout";
     }
 
     private String getPrincipal() {
