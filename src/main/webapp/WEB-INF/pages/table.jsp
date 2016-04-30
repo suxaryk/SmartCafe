@@ -22,32 +22,47 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xc-3">
                 <div id="accordion" class="panel-group">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a href="#collapse-1" data-parent="#accordion" data-toggle="collapse">Open first slade</a>
-                            </h4>
-                        </div>
-                        <div id="collapse-1" class="panel-collapse collapse-in">
-                            <div class="panel-body">
-                                <p>Content1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur enim sunt suscipit! Alias consectetur culpa, dignissimos ea enim eos eveniet id illo, neque officiis pariatur porro praesentium quia. Dolor, sapiente.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a href="#collapse-2" data-parent="#accordion" data-toggle="collapse">Open second slade</a>
-                            </h4>
-                        </div>
-                        <div id="collapse-2" class="panel-collapse collapse">
-                            <div class="panel-heading">
-                                <p>Content2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur enim sunt suscipit! Alias consectetur culpa, dignissimos ea enim eos eveniet id illo, neque officiis pariatur porro praesentium quia. Dolor, sapiente.</p>
-                            </div>
-                        </div>
-                    </div>
+
+
+                    <%--<div class="panel panel-danger">--%>
+                        <%--<div class="panel-heading">--%>
+                            <%--<h4 class="panel-title">--%>
+                                <%--<a href="#collapse-1" data-parent="#accordion" data-toggle="collapse">Open first slade</a>--%>
+                            <%--</h4>--%>
+                        <%--</div>--%>
+                        <%--<div id="collapse-1" class="panel-collapse collapse">--%>
+                            <%--<div class="panel-body">--%>
+                                <%--<p>Content1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur enim sunt suscipit! Alias consectetur culpa, dignissimos ea enim eos eveniet id illo, neque officiis pariatur porro praesentium quia. Dolor, sapiente.</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="panel panel-primary">--%>
+                        <%--<div class="panel-heading">--%>
+                            <%--<h4 class="panel-title">--%>
+                                <%--<a href="#collapse-2" data-parent="#accordion" data-toggle="collapse">Open second slade</a>--%>
+                            <%--</h4>--%>
+                        <%--</div>--%>
+                        <%--<div id="collapse-2" class="panel-collapse collapse">--%>
+                            <%--<div class="panel-heading">--%>
+                                <%--<p>Content2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur enim sunt suscipit! Alias consectetur culpa, dignissimos ea enim eos eveniet id illo, neque officiis pariatur porro praesentium quia. Dolor, sapiente.</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<div class="panel panel-info">--%>
+                        <%--<div class="panel-heading">--%>
+                            <%--<h4 class="panel-title">--%>
+                                <%--<a href="#collapse-3" data-parent="#accordion" data-toggle="collapse">Open third slade</a>--%>
+                            <%--</h4>--%>
+                        <%--</div>--%>
+                        <%--<div id="collapse-3" class="panel-collapse collapse">--%>
+                            <%--<div class="panel-body">--%>
+                                <%--<p>Content3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur enim sunt suscipit! Alias consectetur culpa, dignissimos ea enim eos eveniet id illo, neque officiis pariatur porro praesentium quia. Dolor, sapiente.</p>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+
                     <div class="panel panel-info">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -62,13 +77,24 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
 
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <br>
+                <a href="<c:url value="/logout" />" class="btn btn-danger btn-lg col-lg-pull-6  "  role="button" >Sign out</a>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>
 
-    <a href="<c:url value="/logout" />" class="btn btn-danger btn-sm pull-right"  role="button" >Sign out</a>
+
 
 
 
@@ -78,8 +104,29 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script  type="text/javascript" src="/static/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script  type="text/javascript" src="/static/js/bootstrap.js"></script>
+
+    <script>
+//        $(document).ready(function() {
+            for (var i = 1; i < 25; i++) {
+                $("#accordion").innerHTML = '' +
+                        '<div class="panel panel-info">' +
+                                '<div class="panel-heading">' +
+                                    '<h4 class="panel-title">' +
+                                        '<a href="#collapse-'+ i +'" data-parent="#accordion" data-toggle="collapse"> Стіл №  ' + i + '</a>' +
+                                    '</h4>' +
+                                '</div>' +
+                            '<div id="#collapse-'+ i +'" class="panel-collapse collapse">' +
+                                '<div class="panel-body">' +
+                                    '<p>order items</p>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                        '';
+//            }
+        };
+    </script>
 </body>
 </html>

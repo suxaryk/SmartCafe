@@ -1,9 +1,7 @@
 package com.smartcafe.web.config;
 
-import com.smartcafe.web.conroller.filter.AuthenticationFilter;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import javax.servlet.Filter;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -22,9 +20,6 @@ public class SpringMvcInitializer extends AbstractAnnotationConfigDispatcherServ
         return new String[]{"/"};
     }
 
-    @Override
-    protected Filter[] getServletFilters() {
-        return new Filter[]{new AuthenticationFilter()};
-    }
+
 
 }

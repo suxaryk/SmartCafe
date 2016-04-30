@@ -5,6 +5,6 @@
     <title>index page</title>
 </head>
 <body>
-     <a href="<c:url value='/admin' />">HERE</a>
+     <a href="<c:url value='/table' />">HERE</a>
 </body>
 </html>

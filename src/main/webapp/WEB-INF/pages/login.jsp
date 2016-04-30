@@ -4,6 +4,7 @@
 <head>
     <title>Authentication</title>
     <link href="/static/css/login.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.css" rel="stylesheet">
     <link href="/static/css/bootstrap.css" rel="stylesheet">
 
 </head>
@@ -42,7 +43,9 @@
 
                     <div class="row">
                         <div class="col-xs-6 col-md-6 pull-right">
-                            <button type="submit" class="btn btn-large btn-success pull-right">Sign in</button>
+                            <button type="submit" class="btn btn-lg btn-primary pull-right">
+                                <i class="fa fa-sign-in">  Sign in</i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -51,6 +54,6 @@
     </div>
 
     <script src="/static/js/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
 </body>
 </html>
