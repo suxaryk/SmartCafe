@@ -20,7 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery(
-                        "select username,password, enabled from user where username=?")
+                        "select username, password, enabled from user where username=?")
                 .authoritiesByUsernameQuery(
                         "select username, role from user_role where username=?");
     }
@@ -30,17 +30,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/", "/login", "/static/**").permitAll()
 
-                .antMatchers("/table/**", "/menu/**", "/order/**").access("hasRole('ROLE_USER')")
-                .and().formLogin().loginPage("/login")
+                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/table/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+                .and()
+                    .formLogin().loginPage("/login")
+                    .defaultSuccessUrl("/table")
+                    .failureUrl("/loginPage?error")
                 .usernameParameter("ssoId").passwordParameter("password")
                 .and().csrf()
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");
 
-        http.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin().loginPage("/login")
-                .usernameParameter("ssoId").passwordParameter("password")
-                .and().csrf()
-                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 }

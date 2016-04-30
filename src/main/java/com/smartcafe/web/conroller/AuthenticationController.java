@@ -17,7 +17,7 @@ import java.util.Collection;
 @Controller
 public class AuthenticationController {
 
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String Authentication(ModelMap model) {
         model.addAttribute("user", getPrincipal());
 
@@ -43,7 +43,7 @@ public class AuthenticationController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/login?logout";
+        return "redirect:/home?logout";
     }
 
     private String getPrincipal() {
