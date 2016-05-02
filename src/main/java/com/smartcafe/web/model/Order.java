@@ -17,6 +17,7 @@ public class Order implements Serializable{
     private Timestamp dateTime;
     private Integer totalPrice;
     private Set<OrderItem> orderItems = new HashSet<>(0);
+    private User user;
 
 
     public Order() {
@@ -50,11 +51,11 @@ public class Order implements Serializable{
     }
 
     @Column(name = "total_price", nullable = false)
-    public int getTotalPrice() {
+    public Integer getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(int totalPrice) {
+    public void setTotalPrice(Integer totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -66,4 +67,15 @@ public class Order implements Serializable{
     public void setOrderItems(Set<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+    @OneToOne
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
 }

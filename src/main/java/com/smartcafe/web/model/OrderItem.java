@@ -45,7 +45,7 @@ public class OrderItem implements Serializable {
         this.quantity = quantity;
     }
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "orderItem",cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     public Dish getDish() {
         return dish;
     }

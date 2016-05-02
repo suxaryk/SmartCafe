@@ -2,6 +2,8 @@ package com.smartcafe.web.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -16,6 +18,7 @@ public class Cafe implements Serializable {
     private String passWifi;
     private String wish;
     private Integer tableCount;
+    private Set<User> users = new HashSet<>(0);
 
     public Cafe() {
     }
@@ -81,5 +84,14 @@ public class Cafe implements Serializable {
 
     public void setTableCount(Integer tableCount) {
         this.tableCount = tableCount;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "cafe", cascade = CascadeType.ALL)
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }

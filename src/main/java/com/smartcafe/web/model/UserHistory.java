@@ -9,14 +9,12 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "user_history", schema = "smart_cafe")
 public class UserHistory implements Serializable {
-    private static final long serialVersionUID = 5921421077206761390L;
+    private static final long serialVersionUID = -8502016898082903780L;
 
-    private Integer id;
+    private int id;
     private Timestamp dateTimeIn;
     private Timestamp dateTimeOut;
-
-    public UserHistory() {
-    }
+    private User user;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -25,10 +23,11 @@ public class UserHistory implements Serializable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int userHistoryId) {
+        this.id = userHistoryId;
     }
 
+    @Basic
     @Column(name = "date_time_in", nullable = false)
     public Timestamp getDateTimeIn() {
         return dateTimeIn;
@@ -38,7 +37,8 @@ public class UserHistory implements Serializable {
         this.dateTimeIn = dateTimeIn;
     }
 
-    @Column(name = "date_time_out", nullable = true)
+    @Basic
+    @Column(name = "date_time_out", nullable = false)
     public Timestamp getDateTimeOut() {
         return dateTimeOut;
     }
@@ -47,5 +47,13 @@ public class UserHistory implements Serializable {
         this.dateTimeOut = dateTimeOut;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "username")
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

@@ -17,18 +17,17 @@ public class Dish implements Serializable{
     private Integer unitPrice;
     private Category category;
     private Set<Product> products = new HashSet<>(0);
-    private OrderItem orderItem;
+
 
     public Dish() {
     }
 
-    public Dish(int id, String title, int unitPrice, Category category, Set<Product> products, OrderItem orderItem) {
+    public Dish(int id, String title, int unitPrice, Category category, Set<Product> products) {
         this.id = id;
         this.title = title;
         this.unitPrice = unitPrice;
         this.category = category;
         this.products = products;
-        this.orderItem = orderItem;
     }
 
     @Id
@@ -52,11 +51,11 @@ public class Dish implements Serializable{
     }
 
     @Column(name = "unit_price", nullable = false)
-    public int getUnitPrice() {
+    public Integer getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(Integer unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -83,13 +82,4 @@ public class Dish implements Serializable{
         this.products = recipe;
     }
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    public OrderItem getOrderItem() {
-        return orderItem;
-    }
-
-    public void setOrderItem(OrderItem orderItem) {
-        this.orderItem = orderItem;
-    }
 }

@@ -15,6 +15,7 @@ public class Category implements Serializable{
     private Integer id;
     private String title;
     private Set<Dish> dishes = new HashSet<>(0);
+    private Menu menu;
 
     public Category() {
     }
@@ -54,4 +55,13 @@ public class Category implements Serializable{
         this.dishes = dishes;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "menu_id")
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }
