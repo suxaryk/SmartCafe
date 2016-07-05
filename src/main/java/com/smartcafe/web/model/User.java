@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.GenerationType.SEQUENCE;
+
 
 @Entity
 @Table(name = "user", schema = "smart_cafe")
@@ -33,6 +35,7 @@ public class User implements Serializable{
     }
 
     @Id
+    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "username", nullable = false, length = 45)
     public String getUsername() {
         return username;
@@ -42,7 +45,6 @@ public class User implements Serializable{
         this.username = username;
     }
 
-    @Basic
     @Column(name = "password", nullable = false, length = 45)
     public String getPassword() {
         return password;
@@ -52,7 +54,6 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    @Basic
     @Column(name = "email", nullable = true, length = 45)
     public String getEmail() {
         return email;
@@ -62,7 +63,6 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    @Basic
     @Column(name = "phone", nullable = true, length = 45)
     public String getPhone() {
         return phone;
@@ -72,7 +72,6 @@ public class User implements Serializable{
         this.phone = phone;
     }
 
-    @Basic
     @Column(name = "enabled", nullable = false)
     public byte getEnabled() {
         return enabled;

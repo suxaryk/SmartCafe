@@ -33,4 +33,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         registry.addResourceHandler("/static/**").addResourceLocations("/static/");
     }
 
+
+
 }

@@ -20,7 +20,7 @@ public class Menu  implements Serializable{
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "menu_id", nullable = false)
     public int getId() {
         return id;
@@ -30,7 +30,6 @@ public class Menu  implements Serializable{
         this.id = menuId;
     }
 
-    @Basic
     @Column(name = "title", nullable = false, length = 45)
     public String getTitle() {
         return title;

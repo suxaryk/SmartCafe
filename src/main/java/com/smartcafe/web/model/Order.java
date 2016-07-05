@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "order", schema = "smart_cafe")
@@ -31,7 +32,7 @@ public class Order implements Serializable{
     }
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "order_id", nullable = false)
     public long getId() {
         return id;

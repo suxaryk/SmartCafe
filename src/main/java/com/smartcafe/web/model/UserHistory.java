@@ -3,8 +3,10 @@ package com.smartcafe.web.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "user_history", schema = "smart_cafe")
@@ -12,12 +14,12 @@ public class UserHistory implements Serializable {
     private static final long serialVersionUID = -8502016898082903780L;
 
     private int id;
-    private Timestamp dateTimeIn;
-    private Timestamp dateTimeOut;
+    private Date dateTimeIn;
+    private Date dateTimeOut;
     private User user;
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "user_history_id", nullable = false)
     public int getId() {
         return id;
@@ -27,19 +29,18 @@ public class UserHistory implements Serializable {
         this.id = userHistoryId;
     }
 
-    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_time_in", nullable = false)
-    public Timestamp getDateTimeIn() {
+    public Date getDateTimeIn() {
         return dateTimeIn;
     }
-
     public void setDateTimeIn(Timestamp dateTimeIn) {
         this.dateTimeIn = dateTimeIn;
     }
 
-    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_time_out", nullable = false)
-    public Timestamp getDateTimeOut() {
+    public Date getDateTimeOut() {
         return dateTimeOut;
     }
 

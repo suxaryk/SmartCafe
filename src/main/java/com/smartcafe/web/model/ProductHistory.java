@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import static javax.persistence.GenerationType.IDENTITY;
+import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "product_history", schema = "smart_cafe")
@@ -27,7 +28,7 @@ public class ProductHistory implements Serializable{
     }
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "product_history_id", nullable = false)
     public int getId() {
         return id;
