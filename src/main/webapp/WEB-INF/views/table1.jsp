@@ -82,11 +82,11 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="logout">
         <div class="row">
             <div class="col-md-6">
                 <br>
-                <a href="<c:url value="/logout" />" class="btn btn-danger btn-lg col-lg-pull-6  "  role="button" >Sign out</a>
+                <a href="<c:url value="/logout" />" class="btn btn-danger btn-lg col-lg-pull-6" role="button" >Sign out</a>
                 <br>
                 <br>
                 <br>

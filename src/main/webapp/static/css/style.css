@@ -1,5 +1,95 @@
-.form-signin{
-    max-width: 330px;
-    width: 750px;
-    margin: 0 auto;
+/*spoiler*/
+/*a.spoiler:after{*/
+/*content: " [-]";*/
+/*}*/
+
+/*a.collapsed:after{*/
+/*content: " [+]";*/
+
+/*}*/
+
+#tables div {
+    height: 170px;
+    background: #ffff00;
+    border: 3px #28a4c9;
 }
+
+/*#responsive-menu{*/
+/*height: 100px;*/
+
+/*}*/
+/*.dropdown-menu{*/
+/*width: 70px;*/
+/*}*/
+
+
+
+#responsive-menu ul li a img {
+    height: 64px;
+    width: 64px;
+}
+.svg-invert {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+.category-inv img {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+.navbar-nav li:hover {
+    background: #3c3c3c;
+}
+
+#category{
+    /*min-width: 150px;*/
+    /*width: 94px;*/
+    padding: 0;
+}
+#category li a:hover{
+    background: #c0c0c0;
+}
+.dropdown-menu a {
+    /*width: 94px;*/
+    min-width: 250px;
+    display: inline;
+    font-size: 20px;
+    font-family: "Lucida Console", Monaco, monospace;
+
+
+}
+.dropdown-menu span{
+    padding-left: 20px;
+}
+
+
+
+.thumbnail a {
+    text-decoration: none;
+}
+
+
+.thumbnail img {
+    width: 128px;
+    height: 128px;
+
+}
+.logout{
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
