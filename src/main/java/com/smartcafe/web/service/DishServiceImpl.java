@@ -1,6 +1,6 @@
 package com.smartcafe.web.service;
 
-import com.smartcafe.web.model.Dish;
+import com.smartcafe.web.domain.Dish;
 import org.springframework.stereotype.Service;
 
 @Service

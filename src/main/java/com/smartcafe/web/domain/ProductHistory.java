@@ -1,42 +1,16 @@
-package com.smartcafe.web.model;
+package com.smartcafe.web.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
-
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "product_history", schema = "smart_cafe")
-public class ProductHistory implements Serializable{
+public class ProductHistory extends AbstractDomain{
     private static final long serialVersionUID = 2603643896182676745L;
 
-    private Integer id;
     private Timestamp date;
     private Double quantity;
     private Product product;
-
-    public ProductHistory() {
-    }
-
-    public ProductHistory(int id, Timestamp date, double quantity, Product product) {
-        this.id = id;
-        this.date = date;
-        this.quantity = quantity;
-        this.product = product;
-    }
-
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
-    @Column(name = "product_history_id", nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     @Column(name = "date", nullable = false)
     public Timestamp getDate() {

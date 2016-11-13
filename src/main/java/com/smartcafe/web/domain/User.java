@@ -1,16 +1,12 @@
-package com.smartcafe.web.model;
+package com.smartcafe.web.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
-
-import static javax.persistence.GenerationType.SEQUENCE;
 
 
 @Entity
 @Table(name = "user", schema = "smart_cafe")
-public class User implements Serializable{
+public class User extends AbstractDomain{
     private static final long serialVersionUID = 4799150320920491185L;
 
     private String username;
@@ -19,23 +15,9 @@ public class User implements Serializable{
     private String phone;
     private byte enabled;
     private Cafe cafe;
-    private Set<UserRole> userRoles = new HashSet<>(0);
-    private Set<UserHistory> userHistory =  new HashSet<>(0);
+    private Set<UserRole> userRoles;
+    private Set<UserHistory> userHistory;
 
-    public User() {
-    }
-
-    public User(String username, String password, String email, String phone, byte enabled, Cafe cafe) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.phone = phone;
-        this.enabled = enabled;
-        this.cafe = cafe;
-    }
-
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
     @Column(name = "username", nullable = false, length = 45)
     public String getUsername() {
         return username;

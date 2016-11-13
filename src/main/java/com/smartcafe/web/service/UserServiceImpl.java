@@ -1,6 +1,6 @@
 package com.smartcafe.web.service;
 
-import com.smartcafe.web.model.User;
+import com.smartcafe.web.domain.User;
 import org.springframework.stereotype.Service;
 
 @Service

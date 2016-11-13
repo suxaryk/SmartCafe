@@ -1,16 +1,12 @@
-package com.smartcafe.web.model;
+package com.smartcafe.web.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
-
 @Entity
 @Table(name = "user_history", schema = "smart_cafe")
-public class UserHistory implements Serializable {
+public class UserHistory extends AbstractDomain {
     private static final long serialVersionUID = -8502016898082903780L;
 
     private int id;
@@ -18,16 +14,6 @@ public class UserHistory implements Serializable {
     private Date dateTimeOut;
     private User user;
 
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
-    @Column(name = "user_history_id", nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int userHistoryId) {
-        this.id = userHistoryId;
-    }
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date_time_in", nullable = false)

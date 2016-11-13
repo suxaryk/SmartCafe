@@ -1,6 +1,6 @@
 package com.smartcafe.web.dao;
 
-import com.smartcafe.web.model.Cafe;
+import com.smartcafe.web.domain.Cafe;
 import org.springframework.stereotype.Repository;
 
 @Repository

@@ -23,11 +23,6 @@ public class BarmenController {
         if (request.isUserInRole("ROLE_ADMIN")){
             request.getRequestDispatcher("/admin").forward(request, response);
         }
-
         return "table";
-
-
     }
-
-
 }

@@ -1,45 +1,17 @@
-package com.smartcafe.web.model;
+package com.smartcafe.web.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
-
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "product", schema = "smart_cafe")
-public class Product implements Serializable{
+public class Product extends AbstractDomain{
     private static final long serialVersionUID = -6897519954136772648L;
 
-    private Integer id;
     private String title;
     private Double quantity;
-    private Set<Dish> dishes = new HashSet<>(0);
-    private Set<ProductHistory> productHistory = new HashSet<>(0);
-
-    public Product() {
-    }
-
-    public Product(int id, String title, double quantity, Set<Dish> dishes, Set<ProductHistory> productHistory) {
-        this.id = id;
-        this.title = title;
-        this.quantity = quantity;
-        this.dishes = dishes;
-        this.productHistory = productHistory;
-    }
-
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
-    @Column(name = "product_id", nullable = false)
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Set<Dish> dishes;
+    private Set<ProductHistory> productHistory;
 
     @Column(name = "title", nullable = false, length = 50)
     public String getTitle() {

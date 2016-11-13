@@ -1,46 +1,19 @@
-package com.smartcafe.web.model;
+package com.smartcafe.web.domain;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
-
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
 @Table(name = "cafe" , schema = "smart_cafe")
-public class Cafe implements Serializable {
+public class Cafe extends AbstractDomain  {
     private static final long serialVersionUID = -8002615824986234456L;
 
-    private Integer id;
     private String title;
     private String address;
     private String passWifi;
     private String wish;
     private Integer tableCount;
-    private Set<User> users = new HashSet<>(0);
-
-    public Cafe() {
-    }
-
-    public Cafe(String title, String address, String passWifi, String wish, Integer tableCount) {
-        this.title = title;
-        this.address = address;
-        this.passWifi = passWifi;
-        this.wish = wish;
-        this.tableCount = tableCount;
-    }
-
-    @Id
-    @GeneratedValue(strategy = SEQUENCE)
-    @Column(name = "cafe_id", nullable = false)
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+    private Set<User> users;
 
     @Column(name = "title", nullable = false, length = 50)
     public String getTitle() {

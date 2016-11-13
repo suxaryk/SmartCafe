@@ -29,7 +29,7 @@ public class HibernateConfiguration {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
         sessionFactory
-                .setPackagesToScan(new String[]{"com.smartafe.web.model"});
+                .setPackagesToScan("com.smartafe.web.domain");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -55,8 +55,8 @@ public class HibernateConfiguration {
                 environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql",
                 environment.getRequiredProperty("hibernate.format_sql"));
-        properties.put("hibernate.hbm2dll.auto",
-                environment.getRequiredProperty("hibernate.hbm2dll.auto"));
+        properties.put("hibernate.hbm2ddl.auto",
+                environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
         return properties;
     }
 

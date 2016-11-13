@@ -10,7 +10,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
 
-//@SuppressWarnings("unchecked")
+
 @Repository
 public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
 
@@ -19,6 +19,7 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
 
     protected Class<? extends E> daoType;
 
+    @SuppressWarnings("unchecked")
     public GenericDaoImpl() {
         Type t = getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
@@ -49,11 +50,13 @@ public abstract class GenericDaoImpl<E, K extends Serializable> implements Gener
         currentSession().delete(entity);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public E find(K key) {
         return (E) currentSession().get(daoType, key);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<E> getAll() {
         return currentSession().createCriteria(daoType).list();

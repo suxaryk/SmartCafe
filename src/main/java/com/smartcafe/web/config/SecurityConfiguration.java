@@ -28,7 +28,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(
                         "select user.username, role from user_role  " +
                         "inner join user on user_role.user_id = user.user_id " +
-                        "where user.username =?");
+                        "where user.username = ?");
     }
 
     @Override
