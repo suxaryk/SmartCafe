@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @MappedSuperclass
 public abstract class AbstractDomain implements Serializable{
-    static final String C_ID = "id";
+    private static final String C_ID = "id";
     private Long id;
 
     @Id
@@ -19,9 +19,5 @@ public abstract class AbstractDomain implements Serializable{
     @Column(name = C_ID, nullable = false)
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 }

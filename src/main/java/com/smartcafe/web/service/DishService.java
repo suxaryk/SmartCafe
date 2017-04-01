@@ -1,6 +1,9 @@
 package com.smartcafe.web.service;
 
 import com.smartcafe.web.domain.Dish;
+import org.springframework.stereotype.Service;
 
-public interface DishService extends GenericService<Dish, Integer>{
+@Service
+public class DishService extends GenericServiceImpl<Dish, Long> {
+
 }

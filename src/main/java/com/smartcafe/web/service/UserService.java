@@ -1,8 +1,9 @@
 package com.smartcafe.web.service;
 
-
 import com.smartcafe.web.domain.User;
+import org.springframework.stereotype.Service;
 
-public interface UserService extends GenericService<User, Integer> {
+@Service
+public class UserService extends GenericServiceImpl<User, Long>{
 
 }

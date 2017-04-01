@@ -1,8 +1,9 @@
 package com.smartcafe.web.dao;
 
 import com.smartcafe.web.domain.Cafe;
+import org.springframework.stereotype.Repository;
 
-public interface CafeDao extends GenericDao<Cafe, Integer> {
-
+@Repository
+public class CafeDao extends GenericDaoImpl<Cafe, Long> implements GenericDao<Cafe, Long> {
 
 }

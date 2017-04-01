@@ -1,8 +1,9 @@
 package com.smartcafe.web.conroller;
 
-import com.smartcafe.web.service.CafeService;
+import com.smartcafe.web.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,12 +16,12 @@ import java.io.IOException;
 public class BarmenController {
 
     @Autowired
-    CafeService cafeService;
+    private CategoryService categoryService;
 
-    //not work
     @RequestMapping(value = {"/table"}, method = RequestMethod.GET)
-    public String Authentication(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String Authentication(HttpServletRequest request, HttpServletResponse response, ModelMap model) throws ServletException, IOException {
         if (request.isUserInRole("ROLE_ADMIN")){
+            model.addAttribute("categories", categoryService.getAll());
             request.getRequestDispatcher("/admin").forward(request, response);
         }
         return "table";

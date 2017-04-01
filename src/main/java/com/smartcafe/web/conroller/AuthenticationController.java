@@ -18,10 +18,7 @@ public class AuthenticationController {
     @RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
     public String Authentication(ModelMap model) {
         model.addAttribute("user", getPrincipal());
-
-
         return "index";
-
     }
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
@@ -45,7 +42,7 @@ public class AuthenticationController {
     }
 
     private String getPrincipal() {
-        String userName = null;
+        String userName;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof UserDetails) {

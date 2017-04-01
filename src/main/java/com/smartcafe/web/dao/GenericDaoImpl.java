@@ -3,7 +3,6 @@ package com.smartcafe.web.dao;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -11,7 +10,6 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 
-@Repository
 public abstract class GenericDaoImpl<E, K extends Serializable> implements GenericDao<E, K> {
 
     @Autowired

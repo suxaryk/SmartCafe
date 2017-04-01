@@ -1,6 +1,9 @@
 package com.smartcafe.web.service;
 
 import com.smartcafe.web.domain.Cafe;
+import org.springframework.stereotype.Service;
 
-public interface CafeService extends GenericService<Cafe, Integer> {
+@Service
+public class CafeService extends GenericServiceImpl<Cafe, Long>{
+
 }

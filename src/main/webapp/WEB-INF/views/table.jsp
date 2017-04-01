@@ -20,7 +20,7 @@
     <![endif]-->
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-static-top">
+<div id="top-menu" class="navbar navbar-inverse navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#responsive-menu">
@@ -36,16 +36,16 @@
         </div>
         <div class="collapse navbar-collapse" id="responsive-menu">
             <ul class="nav navbar-nav">
-                <li><a href="#"><img class="svg-invert" src="/static/img/svg/1/man.svg" alt=""/></a></li>
+                <li><a href="#" class="top-menu-button"><img class="svg-invert" src="/static/img/svg/1/man.svg" alt=""/></a></li>
                 <li class="dropdown" >
-                    <a href="#" class="category-inv" class="dropdown-toggle" onclick="invertSvg();" data-toggle="dropdown">
+                    <a href="#" class="category-inv top-menu-button dropdown-toggle" onclick="invertSvg();" data-toggle="dropdown">
                         <!--<b class="caret"></b>-->
                         <img  src="/static/img/svg/1/restaurant.svg" alt=""/></a></a>
-                    <ul class="dropdown-menu" id="category" >
+                    <ul class="dropdown-menu cat" id="category" >
                         <li >
                             <a href="cat1">
                                     <img src="/static/img/svg/dinner.svg" alt=""/>
-                                    <span>Перші страви</span>
+                                    <span>${categories}</span>
                             </a>
                         </li>
                         <li>
@@ -83,7 +83,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="#"> <img class="svg-invert" src="/static/img/svg/dinner.svg" alt=""/></a></li>
+                <li><a href="#" class="top-menu-button"> <img class="svg-invert" src="/static/img/svg/dinner.svg" alt=""/></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <a class="navbar-brand" href="<c:url value="/logout" />">  <i class="fa fa-sign-in">  Sign out</i> </a>
